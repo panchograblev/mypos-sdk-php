@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Mypos\IPC\IAPurchase</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Mypos.IPC.html" title="Summary of Mypos\IPC"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Mypos.html">
+							Mypos<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Mypos.IPC.html">
+							IPC						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-Mypos.IPC.Base.html">Base</a></li>
+				<li><a href="class-Mypos.IPC.Card.html">Card</a></li>
+				<li><a href="class-Mypos.IPC.CardStore.html">CardStore</a></li>
+				<li><a href="class-Mypos.IPC.Cart.html">Cart</a></li>
+				<li><a href="class-Mypos.IPC.Config.html">Config</a></li>
+				<li><a href="class-Mypos.IPC.Customer.html">Customer</a></li>
+				<li><a href="class-Mypos.IPC.Defines.html">Defines</a></li>
+				<li><a href="class-Mypos.IPC.GetTxnStatus.html">GetTxnStatus</a></li>
+				<li><a href="class-Mypos.IPC.Helper.html">Helper</a></li>
+				<li class="active"><a href="class-Mypos.IPC.IAPurchase.html">IAPurchase</a></li>
+				<li><a href="class-Mypos.IPC.IAStoreCard.html">IAStoreCard</a></li>
+				<li><a href="class-Mypos.IPC.IAStoredCardUpdate.html">IAStoredCardUpdate</a></li>
+				<li><a href="class-Mypos.IPC.IPCGetTxnLog.html">IPCGetTxnLog</a></li>
+				<li><a href="class-Mypos.IPC.Loader.html">Loader</a></li>
+				<li><a href="class-Mypos.IPC.MandateManagement.html">MandateManagement</a></li>
+				<li><a href="class-Mypos.IPC.Purchase.html">Purchase</a></li>
+				<li><a href="class-Mypos.IPC.Refund.html">Refund</a></li>
+				<li><a href="class-Mypos.IPC.RequestMoney.html">RequestMoney</a></li>
+				<li><a href="class-Mypos.IPC.Response.html">Response</a></li>
+				<li><a href="class-Mypos.IPC.Reversal.html">Reversal</a></li>
+			</ul>
+
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-Mypos.IPC.IPC_Exception.html">IPC_Exception</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class IAPurchase</h1>
+
+
+	<div class="description">
+	<p>Process IPC method: IPCIAPurchase.
+Collect, validate and send API params</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+			<a href="class-Mypos.IPC.Base.html"><span>Mypos\IPC\Base</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>Mypos\IPC\IAPurchase</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Mypos.html">Mypos</a>\<a href="namespace-Mypos.IPC.html">IPC</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-Mypos.IPC.IAPurchase.html#5-232" title="Go to source code">IAPurchase.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#25-32" title="Go to source code">__construct</a>( <span><code><a href="class-Mypos.IPC.Config.html">Mypos\IPC\Config</a></code> <var>$cnf</var></span> )</code>
+
+			<div class="description short">
+				<p>Return purchase object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Return purchase object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$cnf</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setOrderID" id="_setOrderID">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setOrderID">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#34-43" title="Go to source code">setOrderID</a>( <span>string <var>$orderID</var></span> )</code>
+
+			<div class="description short">
+				<p>Purchase identifier - must be unique</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Purchase identifier - must be unique</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$orderID</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getOrderID" id="_getOrderID">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getOrderID">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#45-52" title="Go to source code">getOrderID</a>( )</code>
+
+			<div class="description short">
+				<p>Purchase identifier</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Purchase identifier</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setNote" id="_setNote">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setNote">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#54-63" title="Go to source code">setNote</a>( <span>string <var>$note</var></span> )</code>
+
+			<div class="description short">
+				<p>Optional note to purchase</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Optional note to purchase</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$note</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getNote" id="_getNote">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getNote">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#65-72" title="Go to source code">getNote</a>( )</code>
+
+			<div class="description short">
+				<p>Optional note to purchase</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Optional note to purchase</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setCurrency" id="_setCurrency">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setCurrency">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#74-83" title="Go to source code">setCurrency</a>( <span>string <var>$currency</var></span> )</code>
+
+			<div class="description short">
+				<p>ISO-4217 Three letter currency code</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>ISO-4217 Three letter currency code</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$currency</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getCurrency" id="_getCurrency">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getCurrency">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#85-92" title="Go to source code">getCurrency</a>( )</code>
+
+			<div class="description short">
+				<p>ISO-4217 Three letter currency code</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>ISO-4217 Three letter currency code</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setCart" id="_setCart">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setCart">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#94-103" title="Go to source code">setCart</a>( <span><code><a href="class-Mypos.IPC.Cart.html">Mypos\IPC\Cart</a></code> <var>$cart</var></span> )</code>
+
+			<div class="description short">
+				<p>Cart object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Cart object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$cart</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getCart" id="_getCart">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Cart.html">Mypos\IPC\Cart</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getCart">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#105-112" title="Go to source code">getCart</a>( )</code>
+
+			<div class="description short">
+				<p>Cart object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Cart object</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Cart.html">Mypos\IPC\Cart</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getCard" id="_getCard">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Card.html">Mypos\IPC\Card</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getCard">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#114-121" title="Go to source code">getCard</a>( )</code>
+
+			<div class="description short">
+				<p>Card object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Card object</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Card.html">Mypos\IPC\Card</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setCard" id="_setCard">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setCard">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#123-130" title="Go to source code">setCard</a>( <span><code><a href="class-Mypos.IPC.Card.html">Mypos\IPC\Card</a></code> <var>$card</var></span> )</code>
+
+			<div class="description short">
+				<p>Card object</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Card object</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$card</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getAccountSettlement" id="_getAccountSettlement">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getAccountSettlement">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#132-139" title="Go to source code">getAccountSettlement</a>( )</code>
+
+			<div class="description short">
+				<p>Account for payment settlement</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Account for payment settlement</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setAccountSettlement" id="_setAccountSettlement">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setAccountSettlement">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#141-148" title="Go to source code">setAccountSettlement</a>( <span>string <var>$accountSettlement</var></span> )</code>
+
+			<div class="description short">
+				<p>Account for payment settlement</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Account for payment settlement</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$accountSettlement</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="process" id="_process">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-Mypos.IPC.Response.html">Mypos\IPC\Response</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_process">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#150-199" title="Go to source code">process</a>( )</code>
+
+			<div class="description short">
+				<p>Initiate API request</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Initiate API request</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Response.html">Mypos\IPC\Response</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="validate" id="_validate">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_validate">#</a>
+			<code><a href="source-class-Mypos.IPC.IAPurchase.html#201-230" title="Go to source code">validate</a>( )</code>
+
+			<div class="description short">
+				<p>Validate all set purchase details</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Validate all set purchase details</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.IPC_Exception.html">Mypos\IPC\IPC_Exception</a></code>
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+		<div class="panel panel-default">
+	        <div class="panel-heading"><h3>Methods inherited from <a href="class-Mypos.IPC.Base.html#methods">Mypos\IPC\Base</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Mypos.IPC.Base.html#__addPostParam">_addPostParam()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#__processHtmlPost">_processHtmlPost()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#__processPost">_processPost()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#_getCnf">getCnf()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#_getOutputFormat">getOutputFormat()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#_isValidSignature">isValidSignature()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#_setCnf">setCnf()</a></code>, 
+				<code><a href="class-Mypos.IPC.Base.html#_setOutputFormat">setOutputFormat()</a></code>
+			</p>
+		</div>
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+		</div>
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h3>Properties inherited from <a href="class-Mypos.IPC.Base.html#properties">Mypos\IPC\Base</a></h3></div>
+			<p class="elementList">
+				<code><a href="class-Mypos.IPC.Base.html#$outputFormat"><var>$outputFormat</var></a></code>
+			</p>
+		</div>
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Mypos\\IPC\\Base"],["c","Mypos\\IPC\\Card"],["c","Mypos\\IPC\\CardStore"],["c","Mypos\\IPC\\Cart"],["c","Mypos\\IPC\\Config"],["c","Mypos\\IPC\\Customer"],["c","Mypos\\IPC\\Defines"],["c","Mypos\\IPC\\GetTxnStatus"],["c","Mypos\\IPC\\Helper"],["c","Mypos\\IPC\\IAPurchase"],["c","Mypos\\IPC\\IAStoreCard"],["c","Mypos\\IPC\\IAStoredCardUpdate"],["c","Mypos\\IPC\\IPC_Exception"],["c","Mypos\\IPC\\IPCGetTxnLog"],["c","Mypos\\IPC\\Loader"],["c","Mypos\\IPC\\MandateManagement"],["c","Mypos\\IPC\\Purchase"],["c","Mypos\\IPC\\Refund"],["c","Mypos\\IPC\\RequestMoney"],["c","Mypos\\IPC\\Response"],["c","Mypos\\IPC\\Reversal"]];

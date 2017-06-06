@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="images/favicon.ico">
+
+		<title>MyPOS API Samples</title>
+
+		<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>
+
+			@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+			/* Header Links */
+			.header-link {
+				position: absolute;
+				left: 7px;
+				opacity: 0;
+
+			}
+
+			h2:hover .header-link,
+			h3:hover .header-link,
+			h4:hover .header-link,
+			h5:hover .header-link,
+			h6:hover .header-link {
+				opacity: 1;
+			}
+
+
+			.jumbotron {
+				background: #2b91b9 url('resources/img/light-blue-carousel.jpg') no-repeat center center;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+
+			}
+			.jumbotron {
+				margin-bottom: 0px;
+				padding-bottom: 40px;
+				color: #FFF;
+			}
+
+			.jumbotron h2, .jumbotron p, h5 {
+				font-family: 'Roboto', sans-serif;
+				font-weight: 300;
+			}
+
+
+
+
+			@media (max-width: 992px) {
+				.nav {
+					display: none;
+				}
+
+				.jumbotron {
+					background: #2b91b9 url('resources/img/light-blue-carousel.jpg') no-repeat bottom center;
+
+
+				}
+
+				.logo {
+					position: relative;
+				}
+
+				#leftNavigation {
+					visibility: hidden;
+				}
+			}
+
+			@media (min-width: 992px) {
+				.jumbotron {
+					background: #2b91b9 url('resources/img/light-blue-carousel.jpg') no-repeat bottom center;
+
+
+				}
+
+				.footer-div a {
+					text-decoration: none;
+				}
+
+				.img-div {
+					padding-left: 20px;
+					padding-top: 30px;
+				}
+
+
+			}
+
+			html {
+				position: relative;
+				min-height: 100%;
+			}
+
+			body {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				margin-bottom: 60px;
+			}
+
+			.footer {
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				min-height: 60px;
+				padding-top: 15px;
+			}
+
+			.footer-links, .footer-links li {
+				display: inline-block;
+				font-size: 110%;
+				padding-left: 0px;
+				padding-right: 0px;
+				padding-top: 5px;
+				padding-left: 5px;
+			}
+
+			.footer-links a {
+				font-family: 'Roboto', sans-serif;
+				font-weight: bold;
+				color: #2387b0;
+			}
+
+			.footer-links a span{
+				border-bottom: 1px solid;
+			}
+
+
+
+			.fixed {
+				position: fixed;
+			}
+
+			.logo-text{
+				color: #fff;
+				font-family: 'Roboto', sans-serif;
+				font-weight: 300;
+				font-style: italic;
+				margin-left: 60px;
+			}
+
+			.nav{
+				margin-top: 30px;
+				margin-right: 10px;
+			}
+            .nav-stacked > li + li{
+                margin:0;
+            }
+			.nav a {
+				font-weight: bold;
+				color: #2b91b9;
+				border-bottom: 1px solid #2d95bb;
+				border-radius: 0;
+				margin:0;
+			}
+
+			.nav li a:hover, .nav-pills li a{
+				border-radius: 0;
+			}
+
+			.nav li a:hover, .nav-pills li a{
+				border-radius: 0;
+			}
+
+            .main-nav > li{
+                clear:both;
+                overflow:hidden;
+                margin-bottom:40px;
+            }
+            .main-nav li ul li a{
+                border-bottom: 1px solid #2d95bb;
+            }
+            .main-nav h4{
+                border-bottom:4px solid #2d95bb;
+                color:#0b506b;
+                margin:0;
+                padding:0 0 5px;
+            }
+
+			.main-nav li.active ul.sub-nav li.active a,
+			.main-nav li.active ul.sub-nav li.active a:hover{
+				border-radius: 0;
+				background-color: #2b91b9;
+				color: #81ccea;
+			}
+
+			.main-nav li.active ul.sub-nav li a{
+				background-color: #fff;
+				color: #2b91b9;
+				border-radius: 0;
+                border-bottom: 1px solid #2d95bb;
+
+			}
+
+			.main-nav li.active ul.sub-nav li a:hover{
+				background-color: #eee;
+			}
+
+			.sub-nav {
+				margin: 0;
+			}
+
+			 .sub-nav li a i{
+			 	padding-left: 20px;
+			 	font-size: 0.8em;
+			 }
+
+			code{
+				background: #fff;
+				padding: 0;
+			}
+
+
+			.content{
+				margin-top: -20px;
+			}
+
+			/*.panel {
+				overflow: hidden;
+
+			} */
+
+			.panel-primary {
+				border-radius: 0;
+				border: 0;
+				background-color: #fff;
+				box-shadow: 5px 5px 5px rgba(0,0,0,.1),
+					-5px 5px 5px rgba(0,0,0,.1);
+
+			}
+
+			#title-link, #title-link i {
+				color: #fff;
+			}
+
+			.panel-primary .panel-heading {
+				border-radius: 0;
+				border: 0;
+				background-color: #0b506b;
+			}
+
+			#leftNavigation {
+				position: relative;
+				left: 15px;
+			}
+			#leftNavigation.fixed {
+				position: fixed;
+				top: 0;
+				width: calc(25% - 15px);
+				padding-left: 15px;
+			}
+
+			@media only screen and (max-height: 767px) {
+				.main-nav > li { margin-bottom: 20px; }
+				.nav > li > a { padding: 5px 10px; }
+			}
+
+		</style>
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body data-spy="scroll" data-target="#leftNavigation" data-offset="15" class="scrollspy-example">
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3 pull-left img-div">
+						<img src="resources/img/logo_white.png" class="logo img-responsive"/>
+						<p class="logo-text">for Developers</p>
+					</div>
+					<div class="col-md-9 pull-right">
+						<h2>myPOS Virtual Checkout API</h2>
+						<p>These examples are created to experiment with the <br>myPOS Virtual Checkout API capabilities.</p>
+						<br />
+						<div class="footer-div">
+							<ul class="footer-links">
+								<li>
+									<a href="../API/index.html"  target="_blank" id="title-link"><i class="fa fa-file-text-o"></i> <span>myPOS Virtual API Documentation</span></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="row-fluid" id="leftNavigation" role="navigation">
+						<ul class="nav nav-pills nav-stacked main-nav">
+															<li>
+									<h4>Calls from Merchant to API</h4>
+									<ul class="nav nav-pills nav-stacked sub-nav">
+																				<li>
+                                            <a href="#purchase">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCPurchase
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#purchasenocart">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCPurchase (No cart)
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#iapurchase">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCIAPurchase
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#iastorecard">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCIAStoreCard
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#iastorecardupdate">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCIAStoredCardUpdate
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#refund">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCRefund
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#reversal">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCReversal
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#requestmoney">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCRequestMoney
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#mandate_management">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPCMandateManagement
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#IPCGetTxnLog">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPC Get Transaction Log
+                                            </a>
+                                        </li>
+																				<li>
+                                            <a href="#IPCGetTxnStatus">
+                                                <i class="fa fa-chevron-right"></i>
+                                                IPC Get Transaction Status
+                                            </a>
+                                        </li>
+																			</ul>
+								</li>
+							
+															<li>
+									<h4>Calls from API to Merchant</h4>
+									<ul class="nav nav-pills nav-stacked sub-nav">
+																					<li>
+                                                <a href="#notify">
+                                                    <i class="fa fa-chevron-right"></i>
+                                                    IPC Purchase Notify
+                                                </a>
+                                            </li>
+																					<li>
+                                                <a href="#ok">
+                                                    <i class="fa fa-chevron-right"></i>
+                                                    IPC Purchase OK
+                                                </a>
+                                            </li>
+																					<li>
+                                                <a href="#cancel">
+                                                    <i class="fa fa-chevron-right"></i>
+                                                    IPC Purchase Cancel
+                                                </a>
+                                            </li>
+																					<li>
+                                                <a href="#rollback">
+                                                    <i class="fa fa-chevron-right"></i>
+                                                    IPC Purchase Rollback
+                                                </a>
+                                            </li>
+																			</ul>
+								</li>
+							
+						</ul>
+					</div>
+				</div>
+
+				<div class="content col-md-9 samples">
+											
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="purchase" class="panel-title"><a href="#purchase">Purchase with payment card (API call: IPCPurchase)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Customer object and set customer data
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$customer&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Customer</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setFirstName</span><span style="color: #007700">(</span><span style="color: #DD0000">'John'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLastName</span><span style="color: #007700">(</span><span style="color: #DD0000">'Smith'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEmail</span><span style="color: #007700">(</span><span style="color: #DD0000">'demo@demo.demo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPhone</span><span style="color: #007700">(</span><span style="color: #DD0000">'+359111111111'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCountry</span><span style="color: #007700">(</span><span style="color: #DD0000">'BGR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAddress</span><span style="color: #007700">(</span><span style="color: #DD0000">'Business&nbsp;Park&nbsp;Varna'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCity</span><span style="color: #007700">(</span><span style="color: #DD0000">'Varna'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$customer</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setZip</span><span style="color: #007700">(</span><span style="color: #DD0000">'9000'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Cart object and set cart items
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cart&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Cart</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;Book'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9.99</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//name,&nbsp;quantity,&nbsp;price<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;other&nbsp;book'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4.56</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Discount'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2.05</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Purchase object using Config object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$purchase&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlCancel</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://mysite.com/ipc_cancel'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//User&nbsp;comes&nbsp;here&nbsp;after&nbsp;purchase&nbsp;cancelation<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlOk</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://mysite.com/ipc_ok'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//User&nbsp;comes&nbsp;here&nbsp;after&nbsp;purchase&nbsp;success<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlNotify</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mysite.com/ipc_notify'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//IPC&nbsp;sends&nbsp;POST&nbsp;reuquest&nbsp;to&nbsp;this&nbsp;address&nbsp;with&nbsp;purchase&nbsp;status<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//Some&nbsp;unique&nbsp;ID<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setNote</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;note'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//Not&nbsp;required<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCustomer</span><span style="color: #007700">(</span><span style="color: #0000BB">$customer</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCart</span><span style="color: #007700">(</span><span style="color: #0000BB">$cart</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardTokenRequest</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_TOKEN_REQUSET_PAY_AND_STORE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPaymentParametersRequired</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">::</span><span style="color: #0000BB">PURCHASE_TYPE_FULL</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process payment
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$ex</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$ex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Invalid&nbsp;params.&nbsp;To&nbsp;see&nbsp;details&nbsp;use&nbsp;"echo&nbsp;$ex-&gt;getMessage();"<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="purchasenocart" class="panel-title"><a href="#purchasenocart">Request card token without payment(API call: IPCPurchase)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Purchase object using Config object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$purchase&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlCancel</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://mysite.com/ipc_cancel'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//User&nbsp;comes&nbsp;here&nbsp;after&nbsp;purchase&nbsp;cancelation<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlOk</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://mysite.com/ipc_ok'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//User&nbsp;comes&nbsp;here&nbsp;after&nbsp;purchase&nbsp;success<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setUrlNotify</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mysite.com/ipc_notify'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//IPC&nbsp;sends&nbsp;POST&nbsp;reuquest&nbsp;to&nbsp;this&nbsp;address&nbsp;with&nbsp;purchase&nbsp;status<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//Some&nbsp;unique&nbsp;ID<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setNote</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;note'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//Not&nbsp;required<br /><br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardTokenRequest</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_TOKEN_REQUSET_ONLY_STORE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPaymentParametersRequired</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Purchase</span><span style="color: #007700">::</span><span style="color: #0000BB">PURCHASE_TYPE_SIMPLIFIED_PAYMENT_PAGE</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process payment
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$ex</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$ex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Invalid&nbsp;params.&nbsp;To&nbsp;see&nbsp;details&nbsp;use&nbsp;"echo&nbsp;$ex-&gt;getMessage();"<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="iapurchase" class="panel-title"><a href="#iapurchase">Method for checkout when the purchase will be embedded within the external app. All sensitive data will be collected from the external application. (API call: IPCIAPurchase)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath.<br />
+EncryptPublicKey is required to encrypt sensitive data(Card number, Expire date, CVC)<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEncryptPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/encrypt_key.pem'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Cart object and set cart items
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cart&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Cart</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;Book'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9.99</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//name,&nbsp;quantity,&nbsp;price<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;other&nbsp;book'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4.56</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cart</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'Discount'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">2.05</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Card object and set card details
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$card&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardType</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_TYPE_MASTERCARD</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardNumber</span><span style="color: #007700">(</span><span style="color: #DD0000">'5555555555554444'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpMM</span><span style="color: #007700">(</span><span style="color: #DD0000">'12'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpYY</span><span style="color: #007700">(</span><span style="color: #DD0000">'21'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCvc</span><span style="color: #007700">(</span><span style="color: #DD0000">'111'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardHolder</span><span style="color: #007700">(</span><span style="color: #DD0000">'John&nbsp;Doe'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEci</span><span style="color: #007700">(</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAvv</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setXid</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create IAPurchase object using Config object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$purchase&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IAPurchase</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//Some&nbsp;unique&nbsp;ID<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setNote</span><span style="color: #007700">(</span><span style="color: #DD0000">'Some&nbsp;note'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//Not&nbsp;required<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCard</span><span style="color: #007700">(</span><span style="color: #0000BB">$card</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAccountSettlement</span><span style="color: #007700">(</span><span style="color: #DD0000">'11111111119'</span><span style="color: #007700">);</span><span style="color: #FF8000">//Not&nbsp;required<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCart</span><span style="color: #007700">(</span><span style="color: #0000BB">$cart</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$purchase</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//success<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="iastorecard" class="panel-title"><a href="#iastorecard">Storing a card data. All sensitive data will be collected from the external application. (API call: IPCIAStoreCard)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEncryptPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/encrypt_key.pem'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Card object and set card details
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$card&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardType</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_TYPE_MASTERCARD</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardNumber</span><span style="color: #007700">(</span><span style="color: #DD0000">'5555555555554444'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpMM</span><span style="color: #007700">(</span><span style="color: #DD0000">'12'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpYY</span><span style="color: #007700">(</span><span style="color: #DD0000">'21'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCvc</span><span style="color: #007700">(</span><span style="color: #DD0000">'111'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardHolder</span><span style="color: #007700">(</span><span style="color: #DD0000">'John&nbsp;Doe'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEci</span><span style="color: #007700">(</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAvv</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setXid</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create IAStoreCard object using Config object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$store&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IAStoreCard</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardVerification</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IAStoreCard</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_VERIFICATION_YES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAmount</span><span style="color: #007700">(</span><span style="color: #0000BB">1.00</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCard</span><span style="color: #007700">(</span><span style="color: #0000BB">$card</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//success<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">)[</span><span style="color: #DD0000">'cardtoken'</span><span style="color: #007700">];<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="iastorecardupdate" class="panel-title"><a href="#iastorecardupdate">Update a data of already stored card. All sensitive data will be collected from the external application. (API call: IPCIAStoredCardUpdate)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEncryptPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/encrypt_key.pem'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Card object and set card details
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$card&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardToken</span><span style="color: #007700">(</span><span style="color: #DD0000">'1041333312721BC752C1AB7743D0821AA1C9CA09'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardHolder</span><span style="color: #007700">(</span><span style="color: #DD0000">'John&nbsp;Doe'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardType</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Card</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_TYPE_MASTERCARD</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpMM</span><span style="color: #007700">(</span><span style="color: #DD0000">'12'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setExpYY</span><span style="color: #007700">(</span><span style="color: #DD0000">'21'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCvc</span><span style="color: #007700">(</span><span style="color: #DD0000">'111'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setEci</span><span style="color: #007700">(</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAvv</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$card</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setXid</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create IAStoredCardUpdate object using Config object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$store&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IAStoredCardUpdate</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCardVerification</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IAStoreCard</span><span style="color: #007700">::</span><span style="color: #0000BB">CARD_VERIFICATION_YES</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAmount</span><span style="color: #007700">(</span><span style="color: #0000BB">1.00</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCard</span><span style="color: #007700">(</span><span style="color: #0000BB">$card</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$store</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//success<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">)[</span><span style="color: #DD0000">'cardtoken'</span><span style="color: #007700">];<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="refund" class="panel-title"><a href="#refund">Make a refund for previously executed payment (API call: IPCRefund)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Refund object with created config
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$refund&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Refund</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Set Refund params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAmount</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setTrnref</span><span style="color: #007700">(</span><span style="color: #DD0000">'123456'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_XML</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Send Refund request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">if(</span><span style="color: #0000BB">$refund</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">()){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Refund&nbsp;successful!&nbsp;Do&nbsp;something<br /></span><span style="color: #007700">}else{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Do&nbsp;something&nbsp;else<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="reversal" class="panel-title"><a href="#reversal">Cancels a previously executed payment. (API call: IPCReversal)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Reversal object with created config
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$reversal&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Reversal</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Set Reversal params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$reversal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setTrnref</span><span style="color: #007700">(</span><span style="color: #DD0000">'12345678923'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$reversal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_XML</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$reversal</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//success<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="requestmoney" class="panel-title"><a href="#requestmoney">Make a direct withdrawal transaction (Request money) from a specific myPOS account(API call: IPCRequestMoney)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create RequestMoney object with created config
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$rm&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">RequestMoney</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Set RequestMoney params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAmount</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCurrency</span><span style="color: #007700">(</span><span style="color: #DD0000">'EUR'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMandateReferece</span><span style="color: #007700">(</span><span style="color: #DD0000">'126ca831-93d2-4dfc-ab1f-0cce1d0abe9e'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCustomerWalletNumber</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166612'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setReason</span><span style="color: #007700">(</span><span style="color: #DD0000">'Here&nbsp;comes&nbsp;the&nbsp;reason'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_XML</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$rm</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Success.&nbsp;Save&nbsp;IPC_Trnref&nbsp;for&nbsp;transaction<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">()[</span><span style="color: #DD0000">'IPC_Trnref'</span><span style="color: #007700">];<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="mandate_management" class="panel-title"><a href="#mandate_management">Make a new registration of a mandate reference for Request money transactions from a myPOS account or cancel a previously registered mandate reference. (API call: IPCMandateManagement)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create MandateManagement object with created config
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$mandateManagement&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">MandateManagement</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Set MandateManagement params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMandateReferece</span><span style="color: #007700">(</span><span style="color: #DD0000">'126ca831-93d2-4dfc-ab1f-0cce1d0abe9e'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCustomerWalletNumber</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166612'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAction</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">MandateManagement</span><span style="color: #007700">::</span><span style="color: #0000BB">MANDATE_MANAGEMENT_ACTION_REGISTER</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMandateText</span><span style="color: #007700">(</span><span style="color: #DD0000">'Here&nbsp;comes&nbsp;the&nbsp;mandate&nbsp;text'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_XML</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mandateManagement</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />if&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()&nbsp;==&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//success<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Show&nbsp;error.<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="IPCGetTxnLog" class="panel-title"><a href="#IPCGetTxnLog">Get transaction log for previously executed payment (API call: IPCGetTxnLog)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create IPCGetTxnLog object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$ipcLog&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPCGetTxnLog</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #DD0000">'1440'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Check response status and use received data<br />
+You may get response data as an array using getData() method or<br />
+in original communication format using getDataRaw()
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">switch(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()){<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;returned&nbsp;data&nbsp;in&nbsp;the&nbsp;site&nbsp;interfase.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;and&nbsp;display&nbsp;in&nbsp;table&nbsp;or&nbsp;just&nbsp;print_r&nbsp;response<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">::</span><span style="color: #0000BB">getArrayVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'log'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_INVALID_PARAMS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Order&nbsp;not&nbsp;found&nbsp;or&nbsp;set&nbsp;params&nbsp;are&nbsp;invalid.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Show&nbsp;error.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Note:<br />
+It is good practice to use try-catch statement to catch "IPC_Exception" exceptions
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcLog&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPCGetTxnLog</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #DD0000">'1440'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$ipcLog</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()){<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">::</span><span style="color: #0000BB">getArrayVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'log'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_INVALID_PARAMS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Not&nbsp;found!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$ex</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;exception&nbsp;message<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$ex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="IPCGetTxnStatus" class="panel-title"><a href="#IPCGetTxnStatus">Get transaction status for previously executed payment (API call: IPCGetTxnStatus)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create GetTxnStatus object and set required params
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$ipcStatus&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">GetTxnStatus</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #DD0000">'1440'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Process request
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Check response status and use received data<br />
+You may get response data as an array using getData() method or<br />
+in original communication format using getDataRaw()
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">switch(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()){<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;returned&nbsp;data&nbsp;in&nbsp;the&nbsp;site&nbsp;interfase.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Loop&nbsp;and&nbsp;display&nbsp;in&nbsp;table&nbsp;or&nbsp;just&nbsp;print_r&nbsp;response<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">::</span><span style="color: #0000BB">getArrayVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'orderstatus'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_INVALID_PARAMS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Order&nbsp;not&nbsp;found&nbsp;or&nbsp;set&nbsp;params&nbsp;are&nbsp;invalid.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Show&nbsp;error.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Note:<br />
+It is good practice to use try-catch statement to catch "IPC_Exception" exceptions
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcStatus&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">GetTxnStatus</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOrderID</span><span style="color: #007700">(</span><span style="color: #DD0000">'1440'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setOutputFormat</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_JSON</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$ipcStatus</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">process</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatus</span><span style="color: #007700">()){<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_SUCCESS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">::</span><span style="color: #0000BB">getArrayVal</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'orderstatus'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">STATUS_INVALID_PARAMS</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Not&nbsp;found!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$ex</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;exception&nbsp;message<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$ex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+																	
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="notify" class="panel-title"><a href="#notify">Successful payment notification (API call: IPCPurchaseNotify)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Response object with income POST data<br />
+This will validate income data and request signature.
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$responce&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Response</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_POST</span><span style="color: #007700">);<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$e</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Error'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Get posted data as an array<br />
+$data is one-dimensional array containing elements with keys: IPCmethod, SID, Amount, Currency, OrderID, IPC_Trnref, RequestSTAN,RequestDateTime<br />
+<br />
+getData() has optional argument $case to change array keys case. It must be CASE_LOWER or CASE_UPPER.<br />
+<br />
+Merchant site must have next logics:<br />
+<br />
+1. Search in DB for order with this OrderID<br />
+<br />
+2. Verify that Amount and Currency match to amount from the original transaction<br />
+<br />
+3. Change order status to "paid"<br />
+<br />
+4. echo "OK"
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$responce</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">);<br />if(</span><span style="color: #DD0000">'...check&nbsp;and&nbsp;update&nbsp;order'</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}else{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Error'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="ok" class="panel-title"><a href="#ok">Successful payment notification (API call: IPCPurchaseOK)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Response object with income POST data<br />
+This will validate income data and request signature.
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$responce&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Response</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_POST</span><span style="color: #007700">);<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$e</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;Some&nbsp;general&nbsp;error&nbsp;or&nbsp;redirect&nbsp;to&nbsp;merchant&nbsp;store&nbsp;home&nbsp;page<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Get posted data as an array<br />
+$data is one-dimensional array containing elements with keys: IPCmethod, SID, Amount, Currency, OrderID, IPC_Trnref, RequestSTAN,RequestDateTime<br />
+<br />
+getData() has optional argument $case to change array keys case. It must be CASE_LOWER or CASE_UPPER.<br />
+<br />
+Merchant site must have next logics:<br />
+<br />
+1. Search in DB for order with this OrderID<br />
+<br />
+2. Verify that Amount and Currency match to amount from the original transaction<br />
+<br />
+3. Show "Thank you" page to merchant customer
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$responce</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">);<br />if(</span><span style="color: #DD0000">'...order&nbsp;is&nbsp;found&nbsp;in&nbsp;merchant&nbsp;store&nbsp;DB'</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;"Your&nbsp;order&nbsp;has&nbsp;been&nbsp;successfully&nbsp;paid"&nbsp;for&nbsp;example.<br /></span><span style="color: #007700">}else{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;Some&nbsp;general&nbsp;error&nbsp;or&nbsp;redirect&nbsp;to&nbsp;merchant&nbsp;store&nbsp;home&nbsp;page<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="cancel" class="panel-title"><a href="#cancel">Cancelation of payment notification (API call: IPCPurchaseCancel)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Response object with income POST data<br />
+This will validate income data and request signature.
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$responce&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Response</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_POST</span><span style="color: #007700">);<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$e</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;Some&nbsp;general&nbsp;error&nbsp;or&nbsp;redirect&nbsp;to&nbsp;merchant&nbsp;store&nbsp;home&nbsp;page<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Get posted data as an array<br />
+$data is one-dimensional array containing elements with keys: IPCmethod, SID, Amount, Currency, OrderID, IPC_Trnref, RequestSTAN,RequestDateTime<br />
+<br />
+getData() has optional argument $case to change array keys case. It must be CASE_LOWER or CASE_UPPER.<br />
+<br />
+Merchant site must have next logics:<br />
+<br />
+1. Search in DB for order with this OrderID<br />
+<br />
+2. Verify that Amount and Currency match to amount from the original transaction<br />
+<br />
+3. Show "Thank you" page to merchant customer
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$responce</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">);<br />if(</span><span style="color: #DD0000">'...order&nbsp;is&nbsp;found&nbsp;in&nbsp;merchant&nbsp;store&nbsp;DB'</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;"Your&nbsp;order&nbsp;has&nbsp;been&nbsp;canceled"&nbsp;for&nbsp;example.<br /></span><span style="color: #007700">}else{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//Display&nbsp;Some&nbsp;general&nbsp;error&nbsp;or&nbsp;redirect&nbsp;to&nbsp;merchant&nbsp;store&nbsp;home&nbsp;page<br /></span><span style="color: #007700">}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+						
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 id="rollback" class="panel-title"><a href="#rollback">Rollback of previous notification (API call: IPCPurchaseRollback)</a></h3>
+								</div>
+
+
+								<ul class="list-group">
+																														<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Include SDK loader<br />
+This will autoload necessary library files and classes
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">require_once&nbsp;</span><span style="color: #DD0000">'./IPC/Loader.php'</span><span style="color: #007700">;</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Config object and set API configuration params<br />
+<br />
+Note that IpcURL is different for sandbox and production environment<br />
+<br />
+You can set RSA keys for request signatures by setting key content using setPrivateKey and setAPIPublicKey or by setting file path using setPrivateKeyPath and setAPIPublicKeyPath<br />
+<br />
+For more information please refer to myPOS Virtual API Documentation
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$cnf&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Config</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setIpcURL</span><span style="color: #007700">(</span><span style="color: #DD0000">'https://mypos.eu/vmp/checkout-test/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setLang</span><span style="color: #007700">(</span><span style="color: #DD0000">'en'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPrivateKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/store_private_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAPIPublicKeyPath</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/keys/api_public_key.pem'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setKeyIndex</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSid</span><span style="color: #007700">(</span><span style="color: #DD0000">'000000000000010'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setVersion</span><span style="color: #007700">(</span><span style="color: #DD0000">'1.3'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cnf</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setWallet</span><span style="color: #007700">(</span><span style="color: #DD0000">'61938166610'</span><span style="color: #007700">);</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Create Response object with income POST data<br />
+This will validate income data and request signature.
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">try{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$responce&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Response</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$cnf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">,&nbsp;\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">Defines</span><span style="color: #007700">::</span><span style="color: #0000BB">COMMUNICATION_FORMAT_POST</span><span style="color: #007700">);<br />}catch(\</span><span style="color: #0000BB">Mypos</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC</span><span style="color: #007700">\</span><span style="color: #0000BB">IPC_Exception&nbsp;$e</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Error'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																					<li class="list-group-item">
+												<div class="row">
+													<div class="col-md-3">
+														Get posted data as an array<br />
+$data is one-dimensional array containing elements with keys: IPCmethod, SID, Amount, Currency, OrderID<br />
+<br />
+getData() has optional argument $case to change array keys case. It must be CASE_LOWER or CASE_UPPER.<br />
+<br />
+Merchant site must have next logics:<br />
+<br />
+1. Search in DB for order with this OrderID<br />
+<br />
+2. Verify that Amount and Currency match to amount from the original transaction<br />
+<br />
+3. Change order status to "Cancelled"<br />
+<br />
+4. echo "OK"
+													</div>
+													<div class="col-md-9">
+														<code><span style="color: #000000">
+<span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$responce</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">(</span><span style="color: #0000BB">CASE_LOWER</span><span style="color: #007700">);<br />if(</span><span style="color: #DD0000">'...check&nbsp;and&nbsp;update&nbsp;order'</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'OK'</span><span style="color: #007700">;<br />}else{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Error'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code>
+													</div>
+												</div>
+											</li>
+																											</ul>
+							</div>
+															</div>
+			</div>
+		</div>
+		<!-- /container -->
+		<footer class="footer">
+			<div class="footer-div col-md-9 col-md-offset-3">
+				<ul class="footer-links">
+					<li>
+						<a href="../API/"  target="_blank" ><i class="fa fa-file-text-o"></i> <span>myPOS Virtual API Documentation</span></a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="resources/js/jquery.min.js"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		<script src="resources/js/scrollspy.min.js"></script>
+		<script src="resources/js/md5.js"></script>
+
+		<script>
+            $(window).on('load scroll', function() {
+                var $navigation = $('#leftNavigation');
+                var $position_for_fix = $('.jumbotron').outerHeight();
+
+                if (($position_for_fix <= $(this).scrollTop()) && ($(this).width() >= 992)) {
+                    $navigation.addClass('fixed');
+                } else {
+                    $navigation.removeClass('fixed');
+                };
+            });
+		</script>
+
+	</body>
+</html>

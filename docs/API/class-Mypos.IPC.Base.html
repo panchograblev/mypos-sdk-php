@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Mypos\IPC\Base</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-Mypos.IPC.html" title="Summary of Mypos\IPC"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-Mypos.html">
+							Mypos<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-Mypos.IPC.html">
+							IPC						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Mypos.IPC.Base.html">Base</a></li>
+				<li><a href="class-Mypos.IPC.Card.html">Card</a></li>
+				<li><a href="class-Mypos.IPC.CardStore.html">CardStore</a></li>
+				<li><a href="class-Mypos.IPC.Cart.html">Cart</a></li>
+				<li><a href="class-Mypos.IPC.Config.html">Config</a></li>
+				<li><a href="class-Mypos.IPC.Customer.html">Customer</a></li>
+				<li><a href="class-Mypos.IPC.Defines.html">Defines</a></li>
+				<li><a href="class-Mypos.IPC.GetTxnStatus.html">GetTxnStatus</a></li>
+				<li><a href="class-Mypos.IPC.Helper.html">Helper</a></li>
+				<li><a href="class-Mypos.IPC.IAPurchase.html">IAPurchase</a></li>
+				<li><a href="class-Mypos.IPC.IAStoreCard.html">IAStoreCard</a></li>
+				<li><a href="class-Mypos.IPC.IAStoredCardUpdate.html">IAStoredCardUpdate</a></li>
+				<li><a href="class-Mypos.IPC.IPCGetTxnLog.html">IPCGetTxnLog</a></li>
+				<li><a href="class-Mypos.IPC.Loader.html">Loader</a></li>
+				<li><a href="class-Mypos.IPC.MandateManagement.html">MandateManagement</a></li>
+				<li><a href="class-Mypos.IPC.Purchase.html">Purchase</a></li>
+				<li><a href="class-Mypos.IPC.Refund.html">Refund</a></li>
+				<li><a href="class-Mypos.IPC.RequestMoney.html">RequestMoney</a></li>
+				<li><a href="class-Mypos.IPC.Response.html">Response</a></li>
+				<li><a href="class-Mypos.IPC.Reversal.html">Reversal</a></li>
+			</ul>
+
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-Mypos.IPC.IPC_Exception.html">IPC_Exception</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Base</h1>
+
+
+	<div class="description">
+	<p>Base API Class. Contains basic API-connection methods.</p>
+	</div>
+
+
+
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-Mypos.IPC.CardStore.html">Mypos\IPC\CardStore</a></code>, 
+			<code><a href="class-Mypos.IPC.GetTxnStatus.html">Mypos\IPC\GetTxnStatus</a></code>, 
+			<code><a href="class-Mypos.IPC.IAPurchase.html">Mypos\IPC\IAPurchase</a></code>, 
+			<code><a href="class-Mypos.IPC.IAStoreCard.html">Mypos\IPC\IAStoreCard</a></code>, 
+			<code><a href="class-Mypos.IPC.IPCGetTxnLog.html">Mypos\IPC\IPCGetTxnLog</a></code>, 
+			<code><a href="class-Mypos.IPC.MandateManagement.html">Mypos\IPC\MandateManagement</a></code>, 
+			<code><a href="class-Mypos.IPC.Purchase.html">Mypos\IPC\Purchase</a></code>, 
+			<code><a href="class-Mypos.IPC.Refund.html">Mypos\IPC\Refund</a></code>, 
+			<code><a href="class-Mypos.IPC.RequestMoney.html">Mypos\IPC\RequestMoney</a></code>, 
+			<code><a href="class-Mypos.IPC.Reversal.html">Mypos\IPC\Reversal</a></code>
+		</p>
+	</div>
+
+	<div>
+		<h3>Indirect known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-Mypos.IPC.IAStoredCardUpdate.html">Mypos\IPC\IAStoredCardUpdate</a></code>
+		</p>
+	</div>
+
+
+
+
+
+	<div class="alert alert-info">
+		<b>Abstract</b><br>
+		
+		<b>Namespace:</b> <a href="namespace-Mypos.html">Mypos</a>\<a href="namespace-Mypos.IPC.html">IPC</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-Mypos.IPC.Base.html#5-224" title="Go to source code">Base.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="getCnf" id="_getCnf">
+
+			<td class="attributes"><code>
+				 protected 
+				<code><a href="class-Mypos.IPC.Config.html">Mypos\IPC\Config</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getCnf">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#25-31" title="Go to source code">getCnf</a>( )</code>
+
+			<div class="description short">
+				<p>Return IPC\Config object with current IPC configuration</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Return IPC\Config object with current IPC configuration</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Config.html">Mypos\IPC\Config</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setCnf" id="_setCnf">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setCnf">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#33-39" title="Go to source code">setCnf</a>( <span><code><a href="class-Mypos.IPC.Config.html">Mypos\IPC\Config</a></code> <var>$cnf</var></span> )</code>
+
+			<div class="description short">
+				<p>Set Config object with current IPC configuration</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set Config object with current IPC configuration</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$cnf</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getOutputFormat" id="_getOutputFormat">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getOutputFormat">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#41-47" title="Go to source code">getOutputFormat</a>( )</code>
+
+			<div class="description short">
+				<p>Return current set output format for API Requests</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Return current set output format for API Requests</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setOutputFormat" id="_setOutputFormat">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setOutputFormat">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#49-55" title="Go to source code">setOutputFormat</a>( <span>string <var>$outputFormat</var></span> )</code>
+
+			<div class="description short">
+				<p>Set current set output format for API Requests</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Set current set output format for API Requests</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$outputFormat</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_addPostParam" id="__addPostParam">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__addPostParam">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#57-64" title="Go to source code">_addPostParam</a>( <span>string <var>$paramName</var></span>, <span>string <var>$paramValue</var></span>, <span> <var>$encrypt</var> = <span class="php-keyword1">false</span></span> )</code>
+
+			<div class="description short">
+				<p>Add API request param</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Add API request param</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$paramName</var></dt>
+						<dd></dd>
+						<dt><var>$paramValue</var></dt>
+						<dd></dd>
+						<dt><var>$encrypt</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_processHtmlPost" id="__processHtmlPost">
+
+			<td class="attributes"><code>
+				 protected 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__processHtmlPost">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#66-82" title="Go to source code">_processHtmlPost</a>( )</code>
+
+			<div class="description short">
+				<p>Generate HTML form with POST params and auto-submit it</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Generate HTML form with POST params and auto-submit it</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="_processPost" id="__processPost">
+
+			<td class="attributes"><code>
+				 protected 
+				<code><a href="class-Mypos.IPC.Response.html">Mypos\IPC\Response</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#__processPost">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#84-141" title="Go to source code">_processPost</a>( )</code>
+
+			<div class="description short">
+				<p>Send POST Request to API and returns Response object with validated response data</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Send POST Request to API and returns Response object with validated response data</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.Response.html">Mypos\IPC\Response</a></code>
+					</div>
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-Mypos.IPC.IPC_Exception.html">Mypos\IPC\IPC_Exception</a></code>
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="isValidSignature" id="_isValidSignature">
+
+			<td class="attributes"><code>
+				 public static
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isValidSignature">#</a>
+			<code><a href="source-class-Mypos.IPC.Base.html#207-222" title="Go to source code">isValidSignature</a>( <span>string <var>$data</var></span>, <span>string <var>$signature</var></span>, <span>string <var>$pubKey</var></span> )</code>
+
+			<div class="description short">
+				<p>Verify signature of API Request params against the API public key</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Verify signature of API Request params against the API public key</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$data</var></dt>
+						<dd>Signed data</dd>
+						<dt><var>$signature</var></dt>
+						<dd>Signature in base64 format</dd>
+						<dt><var>$pubKey</var></dt>
+						<dd>API public key</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="outputFormat" id="$outputFormat">
+			<td class="attributes"><code>
+				protected  
+				string
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-Mypos.IPC.Base.html#20-23" title="Go to source code"><var>$outputFormat</var></a>
+
+				<div class="description short">
+					<p>Output format from API for some requests may be XML or JSON</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Output format from API for some requests may be XML or JSON</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$outputFormat" class="anchor">#</a>
+					<code><code><a href="class-Mypos.IPC.Defines.html#COMMUNICATION_FORMAT_JSON">Mypos\IPC\Defines::<b>COMMUNICATION_FORMAT_JSON</b></a></code></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
