@@ -8,7 +8,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MyPos\\IPC\\": "IPC"
+      "Mypos\\IPC\\": "IPC"
     }
   }
 }
