@@ -9,14 +9,6 @@ namespace Mypos\IPC;
 class Purchase extends Base
 {
 
-    const PURCHASE_TYPE_FULL = 1;
-    const PURCHASE_TYPE_SIMPLIFIED_CALL = 2;
-    const PURCHASE_TYPE_SIMPLIFIED_PAYMENT_PAGE = 3;
-
-    const CARD_TOKEN_REQUSET_NONE = 0;
-    const CARD_TOKEN_REQUSET_ONLY_STORE = 1;
-    const CARD_TOKEN_REQUSET_PAY_AND_STORE = 2;
-
     /**
      * @var Cart
      */
@@ -260,7 +252,7 @@ class Purchase extends Base
         $this->_addPostParam('URL_Cancel', $this->getUrlCancel());
         $this->_addPostParam('URL_Notify', $this->getUrlNotify());
 
-        if ($this->getPaymentParametersRequired() == self::PURCHASE_TYPE_FULL) {
+        if ($this->getPaymentParametersRequired() == Defines::PURCHASE_TYPE_FULL) {
             $this->_addPostParam('customeremail', $this->getCustomer()->getEmail());
             $this->_addPostParam('customerphone', $this->getCustomer()->getPhone());
             $this->_addPostParam('customerfirstnames', $this->getCustomer()->getFirstName());
@@ -272,7 +264,7 @@ class Purchase extends Base
         }
 
 
-        if ($this->getPaymentParametersRequired() != self::PURCHASE_TYPE_SIMPLIFIED_CALL) {
+        if ($this->getPaymentParametersRequired() != Defines::PURCHASE_TYPE_SIMPLIFIED_CALL) {
             $this->_addPostParam('Note', $this->getNote());
             if (!$this->isNoCartPurchase()) {
                 $this->_addPostParam('CartItems', $this->cart->getItemsCount());
@@ -317,11 +309,11 @@ class Purchase extends Base
             throw new IPC_Exception('Invalid Success URL');
         }
 
-        if ($this->getCardTokenRequest() === null || !in_array($this->getCardTokenRequest(), array(self::CARD_TOKEN_REQUSET_NONE, self::CARD_TOKEN_REQUSET_ONLY_STORE, self::CARD_TOKEN_REQUSET_PAY_AND_STORE))) {
+        if ($this->getCardTokenRequest() === null || !in_array($this->getCardTokenRequest(), array(Defines::CARD_TOKEN_REQUSET_NONE, Defines::CARD_TOKEN_REQUSET_ONLY_STORE, Defines::CARD_TOKEN_REQUSET_PAY_AND_STORE))) {
             throw new IPC_Exception('Invalid value provided for CardTokenRequest params');
         }
 
-        if ($this->getPaymentParametersRequired() === null || !in_array($this->getPaymentParametersRequired(), array(self::PURCHASE_TYPE_FULL, self::PURCHASE_TYPE_SIMPLIFIED_CALL, self::PURCHASE_TYPE_SIMPLIFIED_PAYMENT_PAGE))) {
+        if ($this->getPaymentParametersRequired() === null || !in_array($this->getPaymentParametersRequired(), array(Defines::PURCHASE_TYPE_FULL, Defines::PURCHASE_TYPE_SIMPLIFIED_CALL, Defines::PURCHASE_TYPE_SIMPLIFIED_PAYMENT_PAGE))) {
             throw new IPC_Exception('Invalid value provided for PaymentParametersRequired params');
         }
 
@@ -343,7 +335,7 @@ class Purchase extends Base
             }
         }
 
-        if ($this->getPaymentParametersRequired() == self::PURCHASE_TYPE_FULL) {
+        if ($this->getPaymentParametersRequired() == Defines::PURCHASE_TYPE_FULL) {
             try {
                 $this->getCustomer()->validate($this->getPaymentParametersRequired());
             } catch (Exception $ex) {
@@ -360,6 +352,6 @@ class Purchase extends Base
      */
     private function isNoCartPurchase()
     {
-        return $this->getCardTokenRequest() == self::CARD_TOKEN_REQUSET_ONLY_STORE;
+        return $this->getCardTokenRequest() == Defines::CARD_TOKEN_REQUSET_ONLY_STORE;
     }
 }
